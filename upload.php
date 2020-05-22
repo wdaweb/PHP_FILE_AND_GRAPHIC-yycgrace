@@ -18,13 +18,28 @@
 </head>
 <body>
  <h1 class="header">檔案上傳練習</h1>
+
  <!----建立你的表單及設定編碼----->
 
-
-
+<form action="catch_file.php" method="post" enctype="multipart/form-data"> <!-- enctype: encode type -->
+    <input type="file" name="upload" id="img"> <!-- name是$_FILES陣列的一維key值 -->
+    <input type="submit" value="上傳">
+</form>
 
 
 <!----建立一個連結來查看上傳後的圖檔---->  
+<?php
+if(!empty($_GET['filename'])){
+    $name=$_GET['filename'];
+?>
+    <!-- 實務上會先判斷filename是否存在,if後就不接else導出$name=""空值,否則會導向目錄 -->
+    <img src="img/<?=$name;?>" alt="" style="width:200px">
+    <!-- 若檔案有多種類型,可以用type值判斷標籤-如img -->
+
+<?php
+}
+?>
+
 
 
 </body>
